@@ -37,7 +37,9 @@ tasks {
 		inputs.property("version", project.version)
 
 		filesMatching("fabric.mod.json") {
-			expand(mapOf("version" to project.version))
+			expand(mapOf("version" to project.version)) {
+				escapeBackslash = true
+			}
 		}
 	}
 
@@ -52,9 +54,18 @@ tasks {
 		options.release = 17
 	}
 
+	javadoc {
+		// disables annoying javadoc warnings, remove this if you care about those
+		(options as CoreJavadocOptions).addBooleanOption("Xdoclint:none", true)
+	}
+
 	java {
 		withSourcesJar()
 		withJavadocJar()
+
+		toolchain {
+			languageVersion = JavaLanguageVersion.of(17)
+		}
 
 		sourceCompatibility = JavaVersion.VERSION_17
 		targetCompatibility = JavaVersion.VERSION_17
