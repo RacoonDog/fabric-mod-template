@@ -46,7 +46,7 @@ tasks {
 
 	withType<JavaCompile> {
 		options.encoding = "UTF-8"
-		options.release = 17
+		options.release = 21
 	}
 
 	javadoc {
@@ -59,11 +59,11 @@ tasks {
 		withJavadocJar()
 
 		toolchain {
-			languageVersion = JavaLanguageVersion.of(17)
+			languageVersion = JavaLanguageVersion.of(21)
 		}
 
-		sourceCompatibility = JavaVersion.VERSION_17
-		targetCompatibility = JavaVersion.VERSION_17
+		sourceCompatibility = JavaVersion.VERSION_21
+		targetCompatibility = JavaVersion.VERSION_21
 	}
 }
 
